@@ -4,9 +4,12 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-02396cdd13e9a1257"
-  instance_type = var.ec2_instance_type
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/24"
+  tags = {
+    Name = "main"
+  }
+}
 
   tags = {
     name = var.instance_name

@@ -28,11 +28,11 @@ resource "aws_subnet" "private" {
     Name = "Private"
   }
 }
-# resource "aws_instance" "app_server" {
-#   ami           = "ami-02396cdd13e9a1257"
-#   instance_type = var.ec2_instance_type
 
-#   tags = {
-#     name = var.instance_name
-#   }
-# }
+resource "aws_internet_gateway" "ig" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "ig"
+  }
+}
